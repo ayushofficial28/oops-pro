@@ -10,8 +10,9 @@ private:
     string allowedType;
     bool isOccupied;
     shared_ptr<Vehicle> parkedVehicle;
+    int charge;
 public:
-    ParkingSlot(int id, string type);
+    ParkingSlot(int id, string type, int charge);
     bool canPark(shared_ptr<Vehicle> v);
     void park(shared_ptr<Vehicle> v);
     void release();

@@ -3,9 +3,9 @@
 using namespace std;
 
 ParkingLot::ParkingLot() {
-    for (int i = 0; i < 5; ++i) slots.emplace_back(i, "Car");
-    for (int i = 5; i < 8; ++i) slots.emplace_back(i, "Bike");
-    for (int i = 8; i < 10; ++i) slots.emplace_back(i, "Truck");
+    for (int i = 0; i < 5; ++i) slots.emplace_back(i, "Car", 40);
+    for (int i = 5; i < 8; ++i) slots.emplace_back(i, "Bike", 20);
+    for (int i = 8; i < 10; ++i) slots.emplace_back(i, "Truck", 80);
 }
 
 ParkingSlot* ParkingLot::allocateSlot(shared_ptr<Vehicle> v) {
@@ -19,12 +19,11 @@ ParkingSlot* ParkingLot::allocateSlot(shared_ptr<Vehicle> v) {
 }
 
 void ParkingLot::releaseSlot(int slotId) {
-    for (auto& slot : slots) {
-        if (slot.getId() == slotId) {
-            slot.release();
-            break;
-        }
+    if(slotId>=0 && slotId<10){
+        ParkingSlot *slot=&slots[slotId];
+        slot->release();
     }
+    else cout<<"Invalid slotId"<<endl;
 }
 
 void ParkingLot::displayStatus() const {

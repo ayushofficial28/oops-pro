@@ -55,7 +55,6 @@ int main() {
                 cout << "Enter Slot ID to release: ";
                 cin >> slotId;
                 lot.releaseSlot(slotId);
-                cout << "Slot " << slotId << " released.\n";
                 break;
             }
             case 3:
